@@ -6,39 +6,43 @@ const posts = [
   { 
     title: 'Post 1',
     content: 'ciambellone', 
-    image: 'ciambellone.jpeg',
+    img: '/img/ciambellone.jpeg',
     tags: ['cioccolato', 'dolce','zuccherato'] 
 },
   { 
    title: 'Post 2', 
    content: 'cracker barbabietola',
-   image: 'cracker_barbabietola.jpeg',
-   tags: ['salato'] 
+   img: '/img/cracker_barbabietola.jpeg',
+   tags: ['salato', 'barbabietola'] 
 },
   { 
     title:'Post 3', 
     content:'pane fritto dolce', 
-    image: 'pane_fritto_dolce.jpeg', 
+    img: '/img/pane_fritto_dolce.jpeg', 
     tags: ['fritto', 'dolce','farina'] 
 },
   { title: 'Post 4',
     content:'pasta barbabietola', 
-    image: 'pasta_barbabietola.jpeg',
+    img: '/img/pasta_barbabietola.jpeg',
     tags: ['farina', 'barbabietola'] 
     },
   { title: 'Post 5',
     content: 'torta paesana',
-    image: 'torta_paesana.jpeg',
+    img: '/img/torta_paesana.jpeg',
     tags: ['farina', 'uova']
-     }
+  }
 ];
 
 blog.get('/', (req, res) => {
-  res.send('Server del mio blog');
+  res.json('Server del mio blog');
 });
 
 blog.get('/bacheca', (req, res) => {
-  res.json(posts);
+  const data ={
+    posts: posts,
+    length : posts.lenght,
+  };
+  res.json(data);
 });
 
 blog.listen(port, () => {
